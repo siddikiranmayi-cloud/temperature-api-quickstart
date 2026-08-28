@@ -290,8 +290,32 @@ current_date,
         "🔥 Real FortyGuard Heatmap"
     )
 
+    map_data = None
+    stats_data = None
 
-    heatmap_map = folium.Map(
+    # Send request to FortyGuard
+    response = requests.post(...)
+
+    if response.ok:
+        final_result= response.json()
+
+    map_data = final_result.get("map_data")
+    stats_data = final_result.get("stats_data")
+
+    st.success("✅ Heatmap generated successfully!")
+    map_data = None
+
+    if map_data:
+        st.json(map_data)
+    else:
+        st.warning("No map data returned by FortyGuard.")
+else:
+    st.error(
+        f"API Error: 
+    {response.status_code}"
+f"{response.text}"
+    )
+map_obj = folium.Map(
 
         location=[
             latitude,
@@ -299,8 +323,9 @@ current_date,
         ],
 
         zoom_start=13
-    )
-    if map_data:
+    )   
+map_data = None
+if map_data:
 
         folium.GeoJson(
 
@@ -312,12 +337,12 @@ current_date,
             heatmap_map
         )
 
-    else:
+else:
 
         st.warning(
             "⚠️ No map data was returned by FortyGuard."
         )
-    folium.Marker(
+        folium.Marker(
 
         [
             latitude,
@@ -331,7 +356,7 @@ current_date,
     ).add_to(
         heatmap_map
     )
-    st_folium(
+        st_folium(
 
         heatmap_map,
 
@@ -339,7 +364,7 @@ current_date,
 
         height=650
     )
-    if stats_data:
+if stats_data:
 
         st.header(
             "🌡️ Temperature Statistics"
