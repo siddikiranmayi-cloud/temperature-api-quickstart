@@ -83,7 +83,7 @@ B.Tech 3rd Year – CSE (AI & ML)
 
 ## 🔗 Demo
 Add a placeholder for the deployed application URL:
-[Live Demo]("https://youtube.com/shorts/lAdCF3inw1Y?si=ZJ19f-x0JBRVrtEN")
+[Live Demo](https://youtube.com/shorts/lAdCF3inw1Y?si=ZJ19f-x0JBRVrtEN)
 
 ## 📂 Repository
 Add a placeholder for the GitHub repository URL.
